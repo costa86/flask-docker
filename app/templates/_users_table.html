@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>USERNAME</th>
+    </thead>
+    <tbody>
+        {% for i in data.users %}
+        <tr>
+            <td>
+                <a href="{{url_for('main.get_user',id=i.id)}}">{{i.id}}</a>
+            </td>
+            <td>{{i.username}}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>

@@ -1,0 +1,41 @@
+version: '3.0'
+
+services:
+  web:
+    container_name: web_container
+    build: .
+    command: flask run
+    volumes: 
+      - .:/code
+    ports:
+      - 5000:5000
+    env_file: 
+      - ./.env
+    networks: 
+      - my_network
+  db:
+    container_name: db_container
+    image: postgres:12-alpine
+    volumes: 
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file: 
+      - ./.db.env
+    networks: 
+      - my_network
+    depends_on: 
+      - web
+  db_ui:
+    container_name: db_ui_container
+    image: dpage/pgadmin4
+    env_file: 
+      - ./.db.ui.env
+    networks: 
+      - my_network
+    depends_on: 
+      - db
+    ports: 
+      - 4000:80
+
+networks: 
+  my_network:
+    driver: bridge

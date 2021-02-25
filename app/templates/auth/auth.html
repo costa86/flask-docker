@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% set title = data.title %}
+{% set new_user = data.new_user %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+{% block content %}
+
+{% if new_user %}
+    {% include 'auth/_register_form.html' %}
+{% else %}
+    {% include 'auth/_login_form.html' %}
+{% endif %}
+
+{% endblock %}

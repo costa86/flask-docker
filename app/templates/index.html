@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% set home = data.home %}
+{% set title = data.title %}
+{% set form = data.form %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+{% block content %}
+
+{% if home %}
+    {% include '_home.html' %}
+{% endif %}
+
+{% if form %}
+    {% include '_posts_form_new.html' %}
+{% endif %}
+
+{% endblock %}

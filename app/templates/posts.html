@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{data.title}}
+{% endblock title %}
+
+
+{% block content %}
+<table>
+    <thead>
+        <th>ID</th>
+        <th>BODY</th>
+    </thead>
+    <tbody>
+        {% for i in data.posts %}
+        <tr>
+            <td>
+                <a href="{{url_for('main.get_post',id=i.id)}}">{{i.id}}</a>
+            </td>
+            <td>{{i.body}}</td>
+        </tr>
+            
+        {% endfor %}
+    </tbody>
+</table>
+
+
+    
+{% endblock %}
