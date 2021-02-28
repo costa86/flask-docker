@@ -8,11 +8,11 @@ from .helpers import create_post
 
 @bp.route('/')
 def index():
-    data = {
+    context = {
         "home":True,
         "title":"home"
     }
-    return render_template("index.html",data=data)
+    return render_template("index.html",**context)
 
 @bp.route("/posts/add",methods=["GET","POST"])
 @login_required
@@ -21,11 +21,11 @@ def add_post():
     if form.validate_on_submit():
         create_post(form.post.data)
         return redirect(url_for("main.posts"))
-    data = {
+    context = {
         "form":form,
         "title":"New Post"
     }
-    return render_template("index.html",data=data)
+    return render_template("index.html",**context)
 
 
 @bp.route("/posts")

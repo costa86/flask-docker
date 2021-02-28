@@ -1,14 +1,14 @@
 <form action="" method="POST">
 
-    {{data.form.hidden_tag()}}
+    {{form.hidden_tag()}}
     <p>
-        {{ data.form.post.label }}<br>
-        {{ data.form.post(cols=32, rows=4) }}<br>
-        {% for error in data.form.post.errors %}
+        {{ form.post.label }}<br>
+        {{ form.post(cols=32, rows=4) }}<br>
+        {% for error in form.post.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
-    <p>{{ data.form.submit() }}</p>
+    <p>{{ form.submit() }}</p>
 </form>
 
 <script>

@@ -15,26 +15,43 @@ services:
       - my_network
   db:
     container_name: db_container
-    image: postgres:12-alpine
+    #image: mysql/mysql-server
+    image: mysql:5.7.22
+    restart: always
+    ports: 
+      - 33067:3306
     volumes: 
-      - ./postgres_data:/var/lib/postgresql/data/
+      - ./mysql_data:/var/lib/mysql
     env_file: 
-      - ./.db.env
+      - ./.mysql.env
     networks: 
       - my_network
     depends_on: 
       - web
-  db_ui:
-    container_name: db_ui_container
-    image: dpage/pgadmin4
-    env_file: 
-      - ./.db.ui.env
-    networks: 
-      - my_network
-    depends_on: 
-      - db
-    ports: 
-      - 4000:80
+  # db:
+  #   container_name: db_container
+  #   image: postgres:12-alpine
+
+  #   volumes: 
+  #     - ./postgres_data:/var/lib/postgresql/data/
+  #   env_file: 
+  #     - ./.db.env
+  #   networks: 
+  #     - my_network
+  #   depends_on: 
+  #     - web
+
+  # db_ui:
+  #   container_name: db_ui_container
+  #   image: dpage/pgadmin4
+  #   env_file: 
+  #     - ./.db.ui.env
+  #   networks: 
+  #     - my_network
+  #   depends_on: 
+  #     - db
+  #   ports: 
+  #     - 4000:80
 
 networks: 
   my_network:

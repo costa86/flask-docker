@@ -1,5 +1,12 @@
-*.env
-/project_env
+#venv env folder
+/env
+#db folders
 /postgres_data
+/mysql_data
+#extensions
 *.sqlite3
+*.env
+*.pyc
+#other
 /__pycache__
+.vscode/
