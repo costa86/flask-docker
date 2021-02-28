@@ -5,8 +5,8 @@
 /mysql_data
 #extensions
 *.sqlite3
-*.env
-*.pyc
+#*.env
+*.py[co]
 #other
 /__pycache__
 .vscode/

@@ -15,11 +15,9 @@ services:
       - my_network
   db:
     container_name: db_container
-    #image: mysql/mysql-server
     image: mysql:5.7.22
-    restart: always
     ports: 
-      - 33067:3306
+      - 3307:3306
     volumes: 
       - ./mysql_data:/var/lib/mysql
     env_file: 
@@ -31,7 +29,6 @@ services:
   # db:
   #   container_name: db_container
   #   image: postgres:12-alpine
-
   #   volumes: 
   #     - ./postgres_data:/var/lib/postgresql/data/
   #   env_file: 
