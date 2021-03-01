@@ -64,7 +64,8 @@ def get_user(id):
 def delete(id):
     post = Post.query.get(id)
     post.delete()
-    return "ola"
+    flash(f"Post {post.id} deleted")
+    return redirect(url_for("main.posts"))
 
 @bp.route("/users/<username>")
 @login_required
