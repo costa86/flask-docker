@@ -59,6 +59,13 @@ def get_user(id):
 
     return render_template("user.html",data=data)
 
+@bp.route("/post/delete/<id>")
+@login_required
+def delete(id):
+    post = Post.query.get(id)
+    post.delete()
+    return "ola"
+
 @bp.route("/users/<username>")
 @login_required
 def profile(username):

@@ -10,6 +10,7 @@
     <thead>
         <th>ID</th>
         <th>BODY</th>
+        <th>ACTIONS</th>
     </thead>
     <tbody>
         {% for i in data.posts %}
@@ -18,6 +19,9 @@
                 <a href="{{url_for('main.get_post',id=i.id)}}">{{i.id}}</a>
             </td>
             <td>{{i.body}}</td>
+            <td>
+                <a href="{{url_for('main.delete',id=i.id)}}">DELETE</a>
+            </td>
         </tr>
             
         {% endfor %}
