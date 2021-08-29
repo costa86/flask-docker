@@ -1,5 +1,6 @@
 def buildApp() {
-    sh 'scp -i $SSH_KEY hello.txt costa@142.93.100.139:'
+    sh 'touch show.txt'
+    sh 'scp -i $SSH_KEY show.txt costa@142.93.100.139:'
 }
 
 def testApp() {
