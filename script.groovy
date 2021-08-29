@@ -2,7 +2,8 @@ def buildApp() {
     sh """
     touch ola.txt
     echo Build for ${params.CUSTOMER}
-    sh 'scp -i $SSH_KEY ola.txt costa@142.93.100.139:'
+    ls -la
+    sh 'scp -i $SSH_KEY hello.txt costa@142.93.100.139:'
     """
 }
 
