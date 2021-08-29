@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parametes {
+    parameters {
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }
     stages {
