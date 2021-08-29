@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     parameters {
@@ -13,6 +15,9 @@ pipeline {
                 echo "Hello ${params.RUN_TESTS}"
                 echo "Hello ${params.CUSTOMER}"
                 """
+                script {
+                    gv = load 'script.groovy'
+                }
             }
         }
         stage('Tests') {
@@ -22,23 +27,11 @@ pipeline {
                 }
             }
             steps {
-                sh '''
-                echo "Testing the app"
-                '''
+                script {
+                    gv.testApp()
+                }
             }
         }
-        stage('Example') {
-        input {
-            message 'Should we continue?'
-            ok 'Yes, we should.'
-            submitter 'alice,bob'
-            parameters {
-                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-            }
-        }
-        steps {
-            echo "Hello, ${PERSON}, nice to meet you."
-        }
-        }
+
     }
 }
