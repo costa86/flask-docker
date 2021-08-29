@@ -1,20 +1,18 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        string(name: 'VERSION', defaultValue: "", description: 'Software version')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Should tests be executed?')
+        choice(name: 'CUSTOMER', choices: ['One', 'Two', 'Three'], description: 'Customer to build to')
     }
     stages {
-        stage('Example') {
+        stage('Start') {
             steps {
-                echo "Hello ${params.PERSON}"
+                sh """
+                echo "Hello ${params.VERSION}"
+                echo "Hello ${params.RUN_TESTS}"
+                echo "Hello ${params.CUSTOMER}"
+                """
             }
         }
     }
