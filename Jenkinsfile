@@ -40,7 +40,7 @@ pipeline {
                 script {
                     gv.buildApp()
                 }
-                sh "scp -i ola.txt ${SSH_KEY}:"
+                sh "scp -i ${SSH_KEY} ola.txt costa@142.93.100.139:"
 
             }
         }
