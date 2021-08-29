@@ -13,4 +13,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            mail to: 'costa86@zoho.com',
+             subject: "Failed Pipeline",
+             body: "Something is wrong with BUILD_URL"
+        }
+    }
 }
