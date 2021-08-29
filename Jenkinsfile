@@ -46,6 +46,8 @@ pipeline {
             steps {
                 script {
                     def browsers = ['chrome', 'firefox']
+                    def map = [name: "Jerry", age: 42, city: "New York"]
+                    echo "${map.name}"
                     for (int i = 0; i < browsers.size(); ++i) {
                         echo "Testing the ${browsers[i]} browser"
                     }
