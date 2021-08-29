@@ -2,6 +2,9 @@ def gv
 
 pipeline {
     agent any
+    environment {
+        SSH_KEY = credentials('PRIVATE_KEY')
+    }
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'Software version')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Should tests be executed?')
@@ -32,6 +35,12 @@ pipeline {
                 }
             }
         }
-
+        stage('Build') {
+            steps {
+                script {
+                    gv.buildApp()
+                }
+            }
+        }
     }
 }
