@@ -1,14 +1,15 @@
 pipeline {
     agent any
-
     stages {
-        stage('First') {
+        stage('Git') {
             steps {
-                sh '''
+                sh """
                 ls
                 pwd
                 whoami
-                '''
+                echo "Commit $GIT_COMMIT"
+                echo "Branch $GIT_BRANCH"
+                """
             }
         }
     }
