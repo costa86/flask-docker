@@ -40,6 +40,8 @@ pipeline {
                 script {
                     gv.buildApp()
                 }
+                sh "scp -i ola.txt $SSH_KEY:"
+
             }
         }
     }
